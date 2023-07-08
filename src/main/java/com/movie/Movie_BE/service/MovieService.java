@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service //đánh dấu đây là service, nơi xử lý logic
 public class MovieService {
@@ -47,7 +49,7 @@ public class MovieService {
 
     public void addData() {
         Movie movie = movieRepositoy.findMovieById(1);
-        List<Information> actors = actorRepository.findAll();
+        Set<Information> actors = actorRepository.findAll().stream().collect(Collectors.toSet());
         movie.setActors(actors);
         movieRepositoy.save(movie);
     }

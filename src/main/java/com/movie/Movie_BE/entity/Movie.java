@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Data //getter & setter
 @AllArgsConstructor //cấp cho t 1 constructor full tham số
@@ -30,8 +31,8 @@ public class Movie {
 
     //1 phim có nhiều actors => nhiều nhiều
     @ManyToMany//tự generate cho mình bảng movie_actors, k cần phải tự tạo bảng bằng cách thêm entity movie_actors nữa
-    List<Information> actors;
+     Set<Information> actors;
 
     @ManyToMany
-    List<Category> categories;
+    Set<Category> categories;
 }
