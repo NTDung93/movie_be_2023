@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data //getter & setter
@@ -18,6 +19,7 @@ public class Movie {
     private long id;
     private String name;
     private String image;
+    private LocalDate releaseDate;
 
     //1 bộ phim thì chỉ có 1 đạo diễn => 1 nhiều
     //trick là cái one chỉ cái tk dc khởi tạo ngay dưới annotation (vd one là director, many là movie)
@@ -29,4 +31,7 @@ public class Movie {
     //1 phim có nhiều actors => nhiều nhiều
     @ManyToMany//tự generate cho mình bảng movie_actors, k cần phải tự tạo bảng bằng cách thêm entity movie_actors nữa
     List<Information> actors;
+
+    @ManyToMany
+    List<Category> categories;
 }

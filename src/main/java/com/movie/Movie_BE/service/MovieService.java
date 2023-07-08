@@ -25,6 +25,11 @@ public class MovieService {
         return list;
     }
 
+    public List<Movie> postMovies(List<Movie> movies) {
+        List<Movie> newMovies = movieRepositoy.saveAll(movies);
+        return newMovies;
+    }
+
     public Movie postMovie(Movie movie) {
         Movie newMovie = movieRepositoy.save(movie);
         return newMovie;

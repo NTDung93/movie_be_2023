@@ -32,6 +32,12 @@ public class MovieController {
         return ResponseEntity.ok(movies);
     }
 
+    @PostMapping("movies")
+    public ResponseEntity postMovies(@RequestBody List<Movie> movies) {
+        List<Movie> movieList = movieService.postMovies(movies);
+        return ResponseEntity.ok(movies);
+    }
+
     @GetMapping("/movie/{movieId}")
     public ResponseEntity getMovieDetail(@PathVariable long movieId) { //ResponseEntity chuyển obj về json để front end render dc ra màn hình
         Movie movies = movieService.getMovieDetailById(movieId);
@@ -48,5 +54,7 @@ public class MovieController {
     public void addData() {
         movieService.addData();
     }
+
+
 
 }
